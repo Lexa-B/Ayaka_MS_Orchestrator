@@ -1,0 +1,342 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["NetLocations", "LLM_Models", "Embedder_Models", "Model_Functions", "LLM_Generation_Hyperparameters"],
+    "properties": {
+        "NetLocations": {
+            "type": "object",
+            "required": [
+                "llm_chat_base_url", 
+                "llm_instruct_base_url", 
+                "llm_reasoning_base_url",
+                "llm_deep_context_base_url",
+                "embedder_base_url_jp", 
+                "embedder_base_url_eng"
+            ],
+            "properties": {
+                "llm_chat_base_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Base URL for chat LLM endpoint"
+                },
+                "llm_instruct_base_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Base URL for instruction LLM endpoint"
+                },
+                "llm_reasoning_base_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Base URL for reasoning LLM endpoint"
+                },
+                "llm_deep_context_base_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Base URL for deep context LLM endpoint"
+                },
+                "embedder_base_url_jp": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Base URL for Japanese embedder endpoint"
+                },
+                "embedder_base_url_eng": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Base URL for English embedder endpoint"
+                }
+            }
+        },
+        "LLM_Models": {
+            "type": "object",
+            "required": [
+                "llm_chat_model", 
+                "llm_instruct_model",
+                "llm_reasoning_model",
+                "llm_deep_context_model"
+            ],
+            "properties": {
+                "llm_chat_model": {
+                    "type": "string",
+                    "description": "Model identifier for chat LLM"
+                },
+                "llm_instruct_model": {
+                    "type": "string",
+                    "description": "Model identifier for instruction LLM"
+                },
+                "llm_reasoning_model": {
+                    "type": "string",
+                    "description": "Model identifier for reasoning LLM"
+                },
+                "llm_deep_context_model": {
+                    "type": "string",
+                    "description": "Model identifier for deep context processing LLM"
+                }
+            }
+        },
+        "Embedder_Models": {
+            "type": "object",
+            "required": ["embedder_model_jp", "embedder_model_eng"],
+            "properties": {
+                "embedder_model_jp": {
+                    "type": "string",
+                    "description": "Model identifier for Japanese embedder"
+                },
+                "embedder_model_eng": {
+                    "type": "string",
+                    "description": "Model identifier for English embedder"
+                }
+            }
+        },
+        "Model_Functions": {
+            "type": "object",
+            "required": [
+                "llm_chat", 
+                "llm_instruct", 
+                "llm_reasoning",
+                "llm_deep_context",
+                "embedder_jp", 
+                "embedder_eng"
+            ],
+            "properties": {
+                "llm_chat": {
+                    "type": "string",
+                    "description": "Function name for chat LLM"
+                },
+                "llm_instruct": {
+                    "type": "string",
+                    "description": "Function name for instruction LLM"
+                },
+                "llm_reasoning": {
+                    "type": "string",
+                    "description": "Function name for reasoning LLM"
+                },
+                "llm_deep_context": {
+                    "type": "string",
+                    "description": "Function name for deep context processing LLM"
+                },
+                "embedder_jp": {
+                    "type": "string",
+                    "description": "Function name for Japanese embedder"
+                },
+                "embedder_eng": {
+                    "type": "string",
+                    "description": "Function name for English embedder"
+                }
+            }
+        },
+        "LLM_Generation_Hyperparameters": {
+            "type": "object",
+            "required": [
+                "llm_chat_beam_mode", "llm_instruct_beam_mode",
+                "llm_chat_beam_size", "llm_instruct_beam_size",
+                "llm_chat_temperature", "llm_instruct_temperature",
+                "llm_chat_top_p", "llm_instruct_top_p",
+                "llm_chat_top_k", "llm_instruct_top_k",
+                "llm_chat_repetition_penalty", "llm_instruct_repetition_penalty",
+                "llm_chat_max_tokens", "llm_instruct_max_tokens",
+                "llm_chat_stop_sequences", "llm_instruct_stop_sequences",
+                "llm_reasoning_beam_mode", "llm_deep_context_beam_mode",
+                "llm_reasoning_beam_size", "llm_deep_context_beam_size",
+                "llm_reasoning_temperature", "llm_deep_context_temperature",
+                "llm_reasoning_top_p", "llm_deep_context_top_p",
+                "llm_reasoning_top_k", "llm_deep_context_top_k",
+                "llm_reasoning_repetition_penalty", "llm_deep_context_repetition_penalty",
+                "llm_reasoning_max_tokens", "llm_deep_context_max_tokens",
+                "llm_reasoning_stop_sequences", "llm_deep_context_stop_sequences"
+            ],
+            "properties": {
+                "llm_chat_beam_mode": {
+                    "type": "boolean",
+                    "description": "Enable/disable beam search mode for chat"
+                },
+                "llm_instruct_beam_mode": {
+                    "type": "boolean",
+                    "description": "Enable/disable beam search mode for instruction"
+                },
+                "llm_chat_beam_size": {
+                    "type": ["boolean", "integer"],
+                    "description": "Beam size for chat (if beam mode enabled)"
+                },
+                "llm_instruct_beam_size": {
+                    "type": ["boolean", "integer"],
+                    "description": "Beam size for instruction (if beam mode enabled)"
+                },
+                "llm_chat_temperature": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "Temperature for chat generation"
+                },
+                "llm_instruct_temperature": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "Temperature for instruction generation"
+                },
+                "llm_chat_top_p": {
+                    "type": ["number", "null"],
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "Top-p (nucleus sampling) value for chat"
+                },
+                "llm_instruct_top_p": {
+                    "type": ["number", "null"],
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "Top-p (nucleus sampling) value for instruction"
+                },
+                "llm_chat_top_k": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Top-k sampling value for chat"
+                },
+                "llm_instruct_top_k": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Top-k sampling value for instruction"
+                },
+                "llm_chat_repetition_penalty": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "description": "Repetition penalty for chat"
+                },
+                "llm_instruct_repetition_penalty": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "description": "Repetition penalty for instruction"
+                },
+                "llm_chat_max_tokens": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Maximum tokens to generate for chat"
+                },
+                "llm_instruct_max_tokens": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Maximum tokens to generate for instruction"
+                },
+                "llm_chat_stop_sequences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Stop sequences for chat generation"
+                },
+                "llm_instruct_stop_sequences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Stop sequences for instruction generation"
+                },
+                "llm_reasoning_beam_mode": {
+                    "type": "boolean",
+                    "description": "Enable/disable beam search mode for reasoning"
+                },
+                "llm_deep_context_beam_mode": {
+                    "type": "boolean",
+                    "description": "Enable/disable beam search mode for deep context processing"
+                },
+                "llm_reasoning_beam_size": {
+                    "type": ["boolean", "integer"],
+                    "description": "Beam size for reasoning (if beam mode enabled)"
+                },
+                "llm_deep_context_beam_size": {
+                    "type": ["boolean", "integer"],
+                    "description": "Beam size for deep context processing (if beam mode enabled)"
+                },
+                "llm_reasoning_temperature": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "Temperature for reasoning generation"
+                },
+                "llm_deep_context_temperature": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "Temperature for deep context processing generation"
+                },
+                "llm_reasoning_top_p": {
+                    "type": ["number", "null"],
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "Top-p (nucleus sampling) value for reasoning"
+                },
+                "llm_deep_context_top_p": {
+                    "type": ["number", "null"],
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "Top-p (nucleus sampling) value for deep context processing"
+                },
+                "llm_reasoning_top_k": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Top-k sampling value for reasoning"
+                },
+                "llm_deep_context_top_k": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Top-k sampling value for deep context processing"
+                },
+                "llm_reasoning_repetition_penalty": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "description": "Repetition penalty for reasoning"
+                },
+                "llm_deep_context_repetition_penalty": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "description": "Repetition penalty for deep context processing"
+                },
+                "llm_reasoning_max_tokens": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Maximum tokens to generate for reasoning"
+                },
+                "llm_deep_context_max_tokens": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Maximum tokens to generate for deep context processing"
+                },
+                "llm_reasoning_stop_sequences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Stop sequences for reasoning generation"
+                },
+                "llm_deep_context_stop_sequences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Stop sequences for deep context processing generation"
+                }
+            }
+        },
+        "API_Keys": {
+            "type": "object",
+            "properties": {
+                "openai_api_key": {
+                    "type": ["string", "null"],
+                    "description": "OpenAI API key (optional - can also use OPENAI_API_KEY environment variable)"
+                }
+            }
+        },
+        "providers": {
+            "type": "object",
+            "properties": {
+                "line": {
+                    "type": "object",
+                    "properties": {
+                        "host": {"type": "string"},
+                        "port": {"type": "integer"},
+                        "protocol": {"type": "string", "enum": ["http", "https"]}
+                    },
+                    "required": ["host", "port", "protocol"]
+                }
+            }
+        }
+    }
+} 

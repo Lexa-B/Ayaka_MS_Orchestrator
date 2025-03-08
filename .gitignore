@@ -18,3 +18,6 @@ DLogging/*
 
 Temp/
 temp/
+
+# Cassandra Secure Connect Bundle
+*/secure-connect-ayakacassdb.zip

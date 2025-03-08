@@ -1,0 +1,164 @@
+{
+    "$schema": "./_Schemas/ModelConfig.schema.json",
+    "NetLocations": {
+        /* チャット – both on the same server for now */
+        "llm_chat_base_url": "http://127.0.0.1:41443/v1",
+
+        /* インストラクション – ToDo: move to a different server */
+        "llm_instruct_base_url": "http://127.0.0.1:41443/v1",
+
+        /* 推論 – ToDo: move to a different server */
+        "llm_reasoning_base_url": "http://127.0.0.1:41443/v1",
+
+        /* 深い文脈 – ToDo: move to a different server */
+        "llm_deep_context_base_url": "http://127.0.0.1:41443/v1",
+
+        /* 日本語 – both on the same server for now */
+        "embedder_base_url_jp": "http://127.0.0.1:42443/v1",
+
+        /* 英語 – ToDo: move to a different server */
+        "embedder_base_url_eng": "http://127.0.0.1:42443/v1"
+    },
+    "LLM_Models": {
+        //"llm_model": "google-gemma-2-9b-it",
+        //"llm_model": "meta-llama-llama-3-1-8b-instruct",
+
+        /* チャットモデル – LLM model for chat (user-facing interaction) */
+        "llm_chat_model": "ayaka-llm-jp-chat-v0",
+
+        /* インストラクションモデル – LLM model for instruction (internal use, focused on instruction following) */
+        "llm_instruct_model": "meta-llama-llama-3-1-8b-instruct",
+
+        /* 推論モデル – LLM model for complex reasoning tasks */
+        "llm_reasoning_model": "meta-llama-llama-3-1-8b-instruct",
+
+        /* 深い文脈モデル – LLM model for processing extensive context */
+        "llm_deep_context_model": "meta-llama-llama-3-1-8b-instruct"
+    },
+    "Embedder_Models": {
+        //"embedder_model": "alibaba_nlp_gte_qwen2_1_5b_instruct",
+        //"embedder_model": "jinaai_jina_embeddings_v3",
+
+        /* 日本語 – Embedding model for Japanese (large-scale, high-quality) */
+        "embedder_model_jp": "cl_nagoya_ruri_large",
+
+        /* 英語 – Embedding model for English (large-scale, high-quality) */
+        "embedder_model_eng": "mixedbread_ai_mxbai_embed_large_v1"
+    },
+    "Model_Functions": {
+        /* チャットモデル – Chat model function */
+        "llm_chat": "ChatAyaka",
+
+        /* インストラクションモデル – Instruction model function */
+        "llm_instruct": "ChatNVIDIA",
+
+        /* 推論モデル – Reasoning model function */
+        "llm_reasoning": "ChatNVIDIA",
+
+        /* 深い文脈モデル – Deep context model function */
+        "llm_deep_context": "ChatNVIDIA",
+
+        /* 日本語 – Embedding model for Japanese */
+        "embedder_jp": "NVIDIAEmbeddings",
+
+        /* 英語 – Embedding model for English */
+        "embedder_eng": "NVIDIAEmbeddings"
+    },
+    "LLM_Generation_Hyperparameters": {
+        /* チャットモデル – Beam mode */
+        "llm_chat_beam_mode": false,
+
+        /* インストラクションモデル – Beam mode */
+        "llm_instruct_beam_mode": false,
+
+        /* 推論モデル – Beam mode */
+        "llm_reasoning_beam_mode": false,
+
+        /* 深い文脈モデル – Beam mode */
+        "llm_deep_context_beam_mode": false,
+
+        /* チャットモデル – Beam size */
+        "llm_chat_beam_size": false,
+
+        /* インストラクションモデル – Beam size */
+        "llm_instruct_beam_size": false,
+
+        /* 推論モデル – Beam size */
+        "llm_reasoning_beam_size": false,
+
+        /* 深い文脈モデル – Beam size */
+        "llm_deep_context_beam_size": false,
+
+        /* チャットモデル – Temperature */
+        "llm_chat_temperature": 0.7,
+
+        /* インストラクションモデル – Temperature */
+        "llm_instruct_temperature": 0.0,
+
+        /* 推論モデル – Temperature */
+        "llm_reasoning_temperature": 0.2,
+
+        /* 深い文脈モデル – Temperature */
+        "llm_deep_context_temperature": 0.3,
+
+        /* チャットモデル – Top P */
+        "llm_chat_top_p": 0.95,
+
+        /* インストラクションモデル – Top P */
+        "llm_instruct_top_p": 0.95,
+
+        /* 推論モデル – Top P */
+        "llm_reasoning_top_p": 0.90,
+
+        /* 深い文脈モデル – Top P */
+        "llm_deep_context_top_p": 0.90,
+
+        /* チャットモデル – Top K */
+        "llm_chat_top_k": 0,
+
+        /* インストラクションモデル – Top K */
+        "llm_instruct_top_k": 0,
+
+        /* 推論モデル – Top K */
+        "llm_reasoning_top_k": 40,
+
+        /* 深い文脈モデル – Top K */
+        "llm_deep_context_top_k": 40,
+
+        /* チャットモデル – Repetition penalty */
+        "llm_chat_repetition_penalty": 0.0,
+
+        /* インストラクションモデル – Repetition penalty */
+        "llm_instruct_repetition_penalty": 0.0,
+
+        /* 推論モデル – Repetition penalty */
+        "llm_reasoning_repetition_penalty": 1.1,
+
+        /* 深い文脈モデル – Repetition penalty */
+        "llm_deep_context_repetition_penalty": 1.1,
+
+        /* チャットモデル – Max tokens */
+        "llm_chat_max_tokens": 4000,
+
+        /* インストラクションモデル – Max tokens */
+        "llm_instruct_max_tokens": 4000,
+
+        /* 推論モデル – Max tokens */
+        "llm_reasoning_max_tokens": 8000,
+
+        /* 深い文脈モデル – Max tokens */
+        "llm_deep_context_max_tokens": 16000,
+
+        /* チャットモデル – Stop sequences */
+        "llm_chat_stop_sequences": [],
+
+        /* インストラクションモデル – Stop sequences */
+        "llm_instruct_stop_sequences": [],
+
+        /* 推論モデル – Stop sequences */
+        "llm_reasoning_stop_sequences": [],
+
+        /* 深い文脈モデル – Stop sequences */
+        "llm_deep_context_stop_sequences": []
+    }
+}
